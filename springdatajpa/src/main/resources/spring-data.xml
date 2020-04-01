@@ -53,11 +53,12 @@
 		<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
+	<bean id="eleveservice" class="eu.ensup.springdatajpa.service.EleveService" autowire="byType"></bean>
 
 
 	<!-- Etape 4 : specifier ou sont les interfaces -->
 		<jpa:repositories base-package="eu.ensup.springdatajpa.dao" />
-
+ 
 
 
 </beans>

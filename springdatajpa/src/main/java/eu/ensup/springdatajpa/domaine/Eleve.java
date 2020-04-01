@@ -11,18 +11,17 @@ public class Eleve {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-
 	private String nom;
 	private String prenom;
-
-	public Eleve() {
-		super();
-	}
 
 	public Eleve(String nom, String prenom) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
+	}
+
+	public Eleve() {
+
 	}
 
 	public int getId() {

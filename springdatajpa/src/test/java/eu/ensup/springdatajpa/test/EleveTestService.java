@@ -10,10 +10,11 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import eu.ensup.springdatajpa.dao.IEleveDao;
 import eu.ensup.springdatajpa.domaine.Eleve;
+import eu.ensup.springdatajpa.service.EleveService;
 
-public class EleveTest {
+public class EleveTestService {
 	private Eleve eleve;
-	private IEleveDao elevedao;
+	private EleveService eleveservice;
 	private ClassPathXmlApplicationContext appContext;
 	
 	@Before
@@ -21,28 +22,28 @@ public class EleveTest {
 		
 		appContext = new ClassPathXmlApplicationContext("spring-data.xml");
 
-		elevedao = (IEleveDao) appContext.getBean("IEleveDao"); //doit avoir la meme casse que l'interface
-		eleve = new Eleve("NDIAYE", "Khady");
+		eleveservice = (EleveService) appContext.getBean("eleveservice"); //doit avoir la meme casse que l'interface
+		eleve = new Eleve("FALL", "Yacine");
 	}
 	@After
 	public void destroy() {
 		
 		eleve = null;
 		appContext = null;
-		elevedao = null;
+		eleveservice = null;
 	}
 	@Test
 	public void testCreateEleve() {
 		
-		elevedao.save(eleve);
-		assertEquals("Khady",elevedao.findOne(1).getPrenom() );
+		eleveservice.creerEleve(eleve);
+		assertEquals("Yacine",eleveservice.lireEleve(5).getPrenom());
 	}
 
 	@Test
 	public void testReadEleve() {
-		
-		assertNotNull(elevedao.findOne(1));
+		assertNotNull(eleveservice.lireEleve(3));
 	}
+
 
 
 }
